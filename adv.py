@@ -22,16 +22,13 @@ class Adventure:
         self.roomTitle = "A brightly lit room"
         self.exits = ["s", "n", "e", "w"]
 
-        while self.roomTitle is not "Pirate Ry":
+        while self.roomTitle is not "Pirate Ry's":
 
     # while len(self.roomDict) < 499:
-    
-            time.sleep(self.cooldown + 1)
 
             if self.currentRoom not in self.roomDict:
                 currentID = self.currentRoom
-                exits = self.exits
-                self.roomDict[currentID] = exits
+                self.roomDict[currentID] = self.exits
                 self.roomDict[currentID].remove(backTrack[-1])
 
             while not len(self.roomDict[self.currentRoom]):
@@ -45,7 +42,15 @@ class Adventure:
                 self.roomTitle = data["title"]
                 self.exits = data["exits"]
                 self.cooldown = data["cooldown"]
+                m = data["messages"]
+                e = data["errors"]
+                print("back loop")
+                print(f"messge: {m}")
+                print(f"error: {e}")
                 print(self.currentRoom)
+                print(self.roomTitle)
+
+                time.sleep(self.cooldown + 1)
 
             move = self.roomDict[self.currentRoom].pop(0)
             path.append(move)
@@ -68,7 +73,14 @@ class Adventure:
             self.roomTitle = data["title"]
             self.exits = data["exits"]
             self.cooldown = data["cooldown"]
+            message = data["messages"]
+            error = data["errors"]
+            print(f"messge: {message}")
+            print(f"error: {error}")
             print(self.currentRoom)
+            print(self.roomTitle)
+
+            time.sleep(self.cooldown + 1)
 
         print(path)
         return path
