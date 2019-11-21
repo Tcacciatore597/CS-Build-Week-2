@@ -8,7 +8,7 @@ url = "https://lambda-treasure-hunt.herokuapp.com/api/adv/move/"
 class Adventure:
     def __init__(self):
         self.roomDict = dict()
-        self.currentRoom = 0
+        self.currentRoom = 196
         self.exits = []
         self.roomTitle = ""
         self.cooldown = 15
@@ -22,7 +22,7 @@ class Adventure:
         self.roomTitle = "A brightly lit room"
         self.exits = ["s", "n", "e", "w"]
 
-        while self.roomTitle is not "Pirate Ry's":
+        while self.currentRoom != 434:
 
     # while len(self.roomDict) < 499:
 
@@ -35,7 +35,7 @@ class Adventure:
                 back = backTrack.pop()
                 path.append(back)
             #call to move player pass in direction (back)
-                r = requests.post(url, json = {"direction": back}, headers = {"Authorization": "Token 630d593ddd37dfd19902d98ef025638b39131316", "Content-Type": "application/json"})
+                r = requests.post(url, json = {"direction": back}, headers = {"Authorization": "Token 79297b57cb2e195475891d782b327643afce5c81", "Content-Type": "application/json"})
                 print(r.status_code)
                 data = json.loads(r.text)
                 self.currentRoom = data["room_id"]
@@ -66,7 +66,7 @@ class Adventure:
         
         #travel to next room passing in (move)
         
-            r = requests.post(url, json = {"direction": move}, headers = {"Authorization": "Token 630d593ddd37dfd19902d98ef025638b39131316", "Content-Type": "application/json"})
+            r = requests.post(url, json = {"direction": move}, headers = {"Authorization": "Token 79297b57cb2e195475891d782b327643afce5c81", "Content-Type": "application/json"})
             print(r.status_code)
             data = json.loads(r.text)
             self.currentRoom = data["room_id"]
