@@ -2,13 +2,15 @@ import requests
 import time
 import json
 url = "https://lambda-treasure-hunt.herokuapp.com/api/adv/move/"
+
+
 class Adventure:
     def __init__(self):
         self.roomDict = dict()
-        self.currentRoom = 426
+        self.currentRoom = 433
         self.exits = []
         self.roomTitle = ""
-        self.cooldown = 15
+        self.cooldown = 12.5
         self.items = []
     def traverse(self):
         path = []
@@ -17,7 +19,7 @@ class Adventure:
         self.roomDict[self.currentRoom] = ["s", "n", "e", "w"]
         self.roomTitle = "A brightly lit room"
         self.exits = ["s", "n", "e", "w"]
-        while self.roomTitle != "Pirate Ry's": #and self.items != [""]:
+        while self.roomTitle != "Wishing Well" and len(self.roomDict) < 499:
     # while len(self.roomDict) < 499:
             if self.currentRoom not in self.roomDict:
                 currentID = self.currentRoom
@@ -72,7 +74,7 @@ class Adventure:
             print(">> Current Room: ", self.currentRoom)
             print(">> Title: ", self.roomTitle)
             print('*** Items:', self.items)
-            time.sleep(self.cooldown + 1)
+            time.sleep(self.cooldown + .2)
         print(path)
         return path
 adv = Adventure()
