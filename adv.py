@@ -22,7 +22,7 @@ class Adventure:
         self.roomTitle = "A brightly lit room"
         self.exits = ["s", "n", "e", "w"]
 
-        while self.roomTitle is not "Pirate Ry's":
+        while self.currentRoom != 434:
 
     # while len(self.roomDict) < 499:
 
